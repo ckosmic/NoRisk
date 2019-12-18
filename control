@@ -1,0 +1,9 @@
+Package: com.ckosmic.cmark
+Name: cmark
+Depends: mobilesubstrate, ws.hbang.common (>= 1.13)
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: iMessage tweak
+Maintainer: ckosmic
+Author: ckosmic
+Section: Tweaks
