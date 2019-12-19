@@ -1,16 +1,19 @@
-/*BOOL isEnabled() {
-	NSDictionary *bundleDefaults = [[NSUserDefaults standardUserDefaults]
-		persistentDomainForName:@"com.ckosmic.cmarkprefs"];
-	id en = [bundleDefaults valueForKey:@"isEnabled"];
-	return [en isEqual:@1];
-}*/
+/*
+ * Tweak.x
+ * NoRisk
+ *
+ * Created by Christian Kosman <support@tripleaxis.net> on 12/18/2019.
+ * Copyright © 2019 ckosmic <support@tripleaxis.net>. All rights reserved.
+ */
+
 #import <Cephei/HBPreferences.h>
 
 static BOOL isEnabled;
 static NSInteger numItems;
 
 HBPreferences *preferences;
-
+static UIColor *rColor;
+static UIColor *wColor;
 
 
 @interface CKConversation : NSObject {
@@ -63,7 +66,6 @@ HBPreferences *preferences;
 
 
 
-
 BOOL isSensitive(CKConversation *convo) {
 	NSArray *numbers = (NSArray *)(convo.recipientStrings);
 	for(int i = 0; i < numItems; i++) {
@@ -86,9 +88,9 @@ BOOL isSensitive(CKConversation *convo) {
 	if(convo && isEnabled) {
 		BOOL effective = isSensitive(self.conversation);
 		if(effective) {
-			self.fromLabel.textColor = [UIColor colorWithRed: 1.0f green: 0.0f blue: 0.0f alpha: 1.0f];
+			self.fromLabel.textColor = rColor;
 		} else {
-			self.fromLabel.textColor = [UIColor colorWithRed: 1.0f green: 1.0f blue: 1.0f alpha: 1.0f];
+			self.fromLabel.textColor = wColor;
 		}
 	}
 }
@@ -110,6 +112,8 @@ BOOL isSensitive(CKConversation *convo) {
 
 
 
+
+
 %ctor {
 	preferences = [[HBPreferences alloc] initWithIdentifier:@"com.ckosmic.cmarkprefs"];
 	[preferences registerDefaults:@{
@@ -118,4 +122,7 @@ BOOL isSensitive(CKConversation *convo) {
 
 	[preferences registerBool:&isEnabled default:YES forKey:@"isEnabled"];
 	[preferences registerInteger:(NSInteger *)&numItems default:0 forKey:@"numItems"];
+
+	rColor = [UIColor colorWithRed: 1.0f green: 0.0f blue: 0.0f alpha: 1.0f];
+	wColor = [UIColor colorWithRed: 1.0f green: 1.0f blue: 1.0f alpha: 1.0f];
 }

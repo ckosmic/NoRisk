@@ -1,6 +1,7 @@
 #include "ABORootListController.h"
 
 @implementation ABORootListController
+
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
@@ -11,16 +12,12 @@
 
 -(void)openPayPal {
 	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"http://paypal.me/ckosmic"]
-	options:@{}
-	completionHandler:nil];
+	openURL:[NSURL URLWithString:@"http://paypal.me/ckosmic"]];
 }
 
 -(void)openGithub {
 	[[UIApplication sharedApplication]
-	openURL:[NSURL URLWithString:@"http://github.com/ckosmic"]
-	options:@{}
-	completionHandler:nil];
+	openURL:[NSURL URLWithString:@"https://github.com/ckosmic/NoRisk"]];
 }
 
 @end

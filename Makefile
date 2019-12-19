@@ -1,4 +1,4 @@
-INSTALL_TARGET_PROCESSES = MobileSMS Springboard
+INSTALL_TARGET_PROCESSES = Springboard
 
 export ARCHS = arm64
 

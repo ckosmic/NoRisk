@@ -2,7 +2,8 @@
     Filter =     {
         Bundles =         (
             "com.apple.MobileSMS",
-            "com.apple.springboard"
+            "com.apple.springboard",
+            "com.apple.UIKit"
         );
     };
 }
