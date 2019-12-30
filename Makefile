@@ -1,6 +1,6 @@
 INSTALL_TARGET_PROCESSES = Springboard
 
-export ARCHS = arm64
+export ARCHS = armv7 arm64 arm64e
 
 include $(THEOS)/makefiles/common.mk
 
