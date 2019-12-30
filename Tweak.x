@@ -14,6 +14,8 @@ static NSInteger numItems;
 HBPreferences *preferences;
 static UIColor *rColor;
 static UIColor *wColor;
+static UIColor *bColor;
+static UIColor *dColor;
 
 
 @interface CKConversation : NSObject {
@@ -54,6 +56,7 @@ static UIColor *wColor;
 	@property (nonatomic,retain) CKConversation * conversation;
 	@property (nonatomic,readonly) CKLabel * fromLabel;
 	@property (nonatomic,assign) CGFloat alpha;
+	@property (nonatomic,readonly) UITraitCollection * traitCollection;
 @end
 
 @interface CKAvatarTitleCollectionReusableView : UICollectionReusableView 
@@ -87,10 +90,12 @@ BOOL isSensitive(CKConversation *convo) {
 
 	if(convo && isEnabled) {
 		BOOL effective = isSensitive(self.conversation);
+		if(dColor == nil) dColor = self.fromLabel.textColor;
 		if(effective) {
 			self.fromLabel.textColor = rColor;
 		} else {
-			self.fromLabel.textColor = wColor;
+			//int uiMode = (int)(self.traitCollection.userInterfaceStyle);
+			self.fromLabel.textColor = dColor;
 		}
 	}
 }
@@ -125,4 +130,5 @@ BOOL isSensitive(CKConversation *convo) {
 
 	rColor = [UIColor colorWithRed: 1.0f green: 0.0f blue: 0.0f alpha: 1.0f];
 	wColor = [UIColor colorWithRed: 1.0f green: 1.0f blue: 1.0f alpha: 1.0f];
+	bColor = [UIColor colorWithRed: 0.0f green: 0.0f blue: 0.0f alpha: 1.0f];
 }
